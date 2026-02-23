@@ -1,8 +1,11 @@
 import { getGithubUser, getGithubRepos } from "@/lib/github";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Users, Star, GitFork, BookOpen, MapPin, Link as LinkIcon, Twitter, Building2 } from "lucide-react";
+import { ArrowLeft, Users, Star, GitFork, BookOpen, MapPin, Link as LinkIcon, Twitter, Building2, Search } from "lucide-react";
 import Navbar from "@/components/Navbar";
+
+// We need this to be a client component to handle the filter state
+import RepoList from "@/components/RepoList";
 
 export default async function UserProfilePage({
     params,
@@ -125,60 +128,7 @@ export default async function UserProfilePage({
                     </div>
                 </div>
 
-                {/* Repositories Section */}
-                <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-                    <BookOpen className="w-8 h-8 text-blue-400" />
-                    Latest Repositories
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {repos.map((repo) => (
-                        <a
-                            key={repo.id}
-                            href={repo.html_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group relative flex flex-col bg-[#0f172a]/60 backdrop-blur-lg border border-slate-800 rounded-2xl p-6 hover:-translate-y-1 transition-all duration-300 hover:border-blue-500/30 hover:shadow-[0_8px_30px_rgb(59,130,246,0.12)]"
-                        >
-                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors truncate">
-                                {repo.name}
-                            </h3>
-                            <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1 line-clamp-2">
-                                {repo.description || "No description provided."}
-                            </p>
-
-                            <div className="flex items-center justify-between text-xs font-medium text-slate-500 mt-auto pt-4 border-t border-slate-800/50">
-                                <div className="flex items-center gap-4">
-                                    {repo.language && (
-                                        <span className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-slate-800/50 border border-slate-700/50 text-slate-300">
-                                            <span className="w-2 h-2 rounded-full bg-blue-400" />
-                                            {repo.language}
-                                        </span>
-                                    )}
-                                    <span className="flex items-center gap-1.5 hover:text-amber-400 transition-colors">
-                                        <Star className="w-4 h-4" />
-                                        {repo.stargazers_count}
-                                    </span>
-                                    <span className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
-                                        <GitFork className="w-4 h-4" />
-                                        {repo.forks_count}
-                                    </span>
-                                </div>
-                                <span className="text-slate-600">
-                                    {new Date(repo.updated_at).toLocaleDateString()}
-                                </span>
-                            </div>
-                        </a>
-                    ))}
-                </div>
-
-                {repos.length === 0 && (
-                    <div className="text-center py-20 bg-[#0f172a]/40 rounded-3xl border border-slate-800/50">
-                        <BookOpen className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-                        <h3 className="text-xl font-bold text-slate-300 mb-2">No Repositories Found</h3>
-                        <p className="text-slate-500">This user hasn't created any public repositories yet.</p>
-                    </div>
-                )}
+                <RepoList initialRepos={repos} />
             </main>
         </div>
     );

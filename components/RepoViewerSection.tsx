@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Search, BookOpen, ArrowRight, Activity } from "lucide-react";
 
 export default function RepoViewerSection() {
-    const [username, setUsername] = useState("");
+    const [query, setQuery] = useState("");
     const router = useRouter();
 
     return (
@@ -32,19 +32,19 @@ export default function RepoViewerSection() {
                     </h1>
 
                     <p className="max-w-xl text-slate-400 text-lg leading-relaxed mt-2">
-                        Enter any Github username to instantly fetch and explore all their public repositories. Filter by language, sort by stars, and uncover top-tier projects.
+                        Enter any keyword or repository name to instantly search GitHub for open source projects. Filter by language, sort by stars, and uncover top-tier codebases.
                     </p>
 
                     {/* Glowing Search Bar */}
                     <div className="w-full max-w-2xl mt-8 relative group">
                         <div className="absolute -inset-1.5 bg-gradient-to-r from-amber-600 to-orange-600 rounded-3xl blur-md opacity-25 group-focus-within:opacity-50 transition duration-500" />
-                        <form onSubmit={(e) => { e.preventDefault(); if (username.trim()) router.push(`/user/${username}`); }} className="relative flex items-center bg-[#0f172a] rounded-2xl border border-slate-700/80 p-2 overflow-hidden shadow-2xl backdrop-blur-xl">
+                        <form onSubmit={(e) => { e.preventDefault(); if (query.trim()) router.push(`/repo/search?q=${encodeURIComponent(query)}`); }} className="relative flex items-center bg-[#0f172a] rounded-2xl border border-slate-700/80 p-2 overflow-hidden shadow-2xl backdrop-blur-xl">
                             <BookOpen className="ml-5 w-6 h-6 text-slate-500 group-focus-within:text-amber-400 transition-colors duration-300" />
                             <input
                                 type="text"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                placeholder="Enter a Github username..."
+                                value={query}
+                                onChange={(e) => setQuery(e.target.value)}
+                                placeholder="Search for repositories (e.g., react, next.js)..."
                                 className="w-full bg-transparent px-5 py-4 outline-none text-lg text-white placeholder-slate-500"
                             />
                             <button type="submit" className="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-amber-500/25 active:scale-95 flex items-center gap-2 mr-1">
