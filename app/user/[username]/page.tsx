@@ -53,13 +53,13 @@ export default async function UserProfilePage({
                             <img
                                 src={user.avatar_url}
                                 alt={`${user.login}'s avatar`}
-                                className="w-32 h-32 md:w-40 md:h-40 rounded-2xl border border-slate-700/80 relative z-10 object-cover bg-slate-800"
+                                className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-2xl border border-slate-700/80 relative z-10 object-cover bg-slate-800"
                             />
                         </div>
 
                         {/* Info */}
-                        <div className="flex-1 overflow-hidden">
-                            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-2 truncate">
+                        <div className="flex-1 overflow-hidden w-full">
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-2 truncate">
                                 {user.name || user.login}
                             </h1>
                             <a
@@ -78,17 +78,17 @@ export default async function UserProfilePage({
                             )}
 
                             {/* Stats */}
-                            <div className="flex flex-wrap gap-4 md:gap-8">
-                                <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 px-4 py-2 rounded-xl border border-slate-700/50">
-                                    <Users className="w-5 h-5 text-blue-400" />
+                            <div className="flex flex-wrap gap-3 md:gap-8">
+                                <div className="flex items-center gap-1.5 sm:gap-2 text-slate-400 bg-slate-800/50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-slate-700/50 text-sm sm:text-base">
+                                    <Users className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                                     <span className="font-semibold text-white">{user.followers}</span> followers
                                 </div>
-                                <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 px-4 py-2 rounded-xl border border-slate-700/50">
-                                    <Users className="w-5 h-5 text-purple-400" />
+                                <div className="flex items-center gap-1.5 sm:gap-2 text-slate-400 bg-slate-800/50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-slate-700/50 text-sm sm:text-base">
+                                    <Users className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400" />
                                     <span className="font-semibold text-white">{user.following}</span> following
                                 </div>
-                                <div className="flex items-center gap-2 text-slate-400 bg-slate-800/50 px-4 py-2 rounded-xl border border-slate-700/50">
-                                    <BookOpen className="w-5 h-5 text-emerald-400" />
+                                <div className="flex items-center gap-1.5 sm:gap-2 text-slate-400 bg-slate-800/50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl border border-slate-700/50 text-sm sm:text-base">
+                                    <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
                                     <span className="font-semibold text-white">{user.public_repos}</span> repos
                                 </div>
                             </div>

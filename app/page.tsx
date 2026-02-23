@@ -29,7 +29,7 @@ export default function Home() {
           </div>
 
           {/* Typography */}
-          <h1 className="text-7xl sm:text-8xl font-black tracking-tight leading-[1.05]">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight leading-[1.05]">
             Uncover The <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-br from-blue-400 via-indigo-400 to-purple-500">
               Open Source
@@ -43,16 +43,18 @@ export default function Home() {
           {/* Glowing Search Bar */}
           <div className="w-full mt-8 relative group">
             <div className="absolute -inset-1.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur-lg opacity-30 group-focus-within:opacity-60 transition duration-500" />
-            <form onSubmit={(e) => { e.preventDefault(); if (username.trim()) router.push(`/user/${username}`); }} className="relative flex items-center bg-[#0f172a] rounded-2xl border border-slate-700/80 p-2 overflow-hidden shadow-2xl backdrop-blur-xl">
-              <Search className="ml-5 w-6 h-6 text-slate-500 group-focus-within:text-blue-400 transition-colors duration-300" />
-              <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter a Github username to begin..."
-                className="w-full bg-transparent px-5 py-4 outline-none text-lg text-white placeholder-slate-500"
-              />
-              <button type="submit" className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-blue-500/25 active:scale-95 flex items-center gap-2 mr-1">
+            <form onSubmit={(e) => { e.preventDefault(); if (username.trim()) router.push(`/user/${username}`); }} className="relative flex flex-col sm:flex-row items-center bg-[#0f172a] rounded-2xl sm:rounded-full border border-slate-700/80 p-2 overflow-hidden shadow-2xl backdrop-blur-xl gap-2 sm:gap-0">
+              <div className="flex items-center w-full relative">
+                <Search className="absolute left-4 w-5 h-5 sm:w-6 sm:h-6 text-slate-500 group-focus-within:text-blue-400 transition-colors duration-300" />
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter a Github username..."
+                  className="w-full bg-transparent pl-12 pr-4 py-3 sm:py-4 outline-none text-base sm:text-lg text-white placeholder-slate-500 rounded-xl sm:rounded-none"
+                />
+              </div>
+              <button type="submit" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 sm:py-4 rounded-xl sm:rounded-full font-bold transition-all shadow-lg hover:shadow-blue-500/25 active:scale-95 flex items-center justify-center gap-2">
                 Explore
                 <ArrowRight className="w-4 h-4" />
               </button>

@@ -45,9 +45,9 @@ export default async function RepoSearchPage({
                 </Link>
 
                 <div className="mb-12">
-                    <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4 flex items-center gap-4 text-white">
-                        <Search className="w-10 h-10 text-blue-500" />
-                        Search Results for "{q}"
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight mb-4 flex items-center gap-3 sm:gap-4 text-white">
+                        <Search className="w-8 h-8 sm:w-10 sm:h-10 text-blue-500 shrink-0" />
+                        <span className="truncate">Search Results for "{q}"</span>
                     </h1>
                     <p className="text-slate-400 text-lg">
                         Found {repos.length} top repositories matching your query.
